@@ -14,7 +14,6 @@ namespace Ejercicio_Animaciones
 {
     public partial class Form1 : Form
     {
-        Timer timerMovimiento = new Timer();
         Heroe Heroe1 = new Heroe();
         Villano Villano1 = new Villano();
         Timer TimerAnimacion = new Timer();
@@ -28,16 +27,19 @@ namespace Ejercicio_Animaciones
             Controls.Add(Heroe1.skin);
 
             Villano1.skin.Size = new Size(200, 200);
-            Villano1.skin.Location = new Point(20, 30);
+            Villano1.skin.Location = new Point(500, 30);
             Villano1.skin.SizeMode = PictureBoxSizeMode.StretchImage;
             Controls.Add(Villano1.skin);
 
             Villano1.cargarFrames();
-
             Heroe1.CargarAnimaciones();
 
             TimerAnimacion.Interval = 50; // Velocidad: 150ms entre cada frame
-            TimerAnimacion.Tick += (s, e) => Heroe1.SiguienteCuadro();
+            TimerAnimacion.Tick += (s, e) =>
+            {
+                Heroe1.SiguienteCuadro();
+                Villano1.siguienteCuadro();
+            };
             TimerAnimacion.Start(); // ¡Empieza la animación!
 
 

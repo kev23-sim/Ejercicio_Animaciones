@@ -31,8 +31,8 @@ namespace Ejercicio_Animaciones.Modelos
         {
             string rutaBase = Path.Combine(Application.StartupPath, "idle_izquierda");
             if (!Directory.Exists(rutaBase)) return;
-            string[] archivos = Directory.GetFiles(rutaBase, "Left - Idle_");
-            for (int i = 0; i <= archivos.Length; i++)
+            string[] archivos = Directory.GetFiles(rutaBase, "Left - Idle_*.png");
+            for (int i = 0; i <= 15; i++)
             {
                 string nombreArchivo = $"Left - Idle_{i:000}.png";
                 string rutaArchivo = Path.Combine(rutaBase, nombreArchivo);
@@ -43,6 +43,6 @@ namespace Ejercicio_Animaciones.Modelos
 
             }
 
-        }
+        }//fin de cargar frames
     }//fin de la clase
 }//fin del namespace

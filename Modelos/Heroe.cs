@@ -12,7 +12,7 @@ namespace Ejercicio_Animaciones.Modelos
 {
     internal class Heroe : Personaje
     {
-        public int velocidad = 2;//velocidad movimiento heroe
+        public int velocidad = 3;//velocidad movimiento heroe
         public int nuevaX;//variable para moverse horizontalmente
         public override PictureBox skin { get; set; } = new PictureBox();//creamos el picture box en el diseño
         public override string nombre { get; set; }//le creamos el atributo nombre al heroe
@@ -78,14 +78,15 @@ namespace Ejercicio_Animaciones.Modelos
             string rutaCarpeta = Path.Combine(Application.StartupPath, carpeta);
             if (!Directory.Exists(rutaCarpeta)) return;
 
-            for (int i = 1; i <= carpeta.Length; i++)
+            // Obtenemos todos los archivos que coincidan con el prefijo y sean .png
+            string[] archivos = Directory.GetFiles(rutaCarpeta, prefijo + "*.png");
+
+            // Ordenamos los archivos alfabéticamente para que la animación siga el orden (001, 002, etc.)
+            Array.Sort(archivos);
+
+            foreach (string rutaCompleta in archivos)
             {
-                string nombreArchivo = $"{prefijo}{i:000}.png";
-                string rutaCompleta = Path.Combine(rutaCarpeta, nombreArchivo);
-                if (File.Exists(rutaCompleta))
-                {
-                    lista.Add(Image.FromFile(rutaCompleta));
-                }
+                lista.Add(Image.FromFile(rutaCompleta));
             }
         }//fin de cargarLista
 
