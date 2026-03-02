@@ -68,6 +68,7 @@ namespace Ejercicio_Animaciones.Modelos
             CargarLista(FramesCaminataI, "caminar_izquierda", "Left - Walking_");
             CargarLista(FramesAtacarD, "atacar_derecha", "Right - Attacking_");
 
+
             AnimacionActual = FramesIdle;
 
         }//fin cargar animaciones
